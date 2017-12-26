@@ -1,4 +1,4 @@
-create table Example (
+create table if not exists Example (
 	id			integer primary key autoincrement not null,
 	text 		          text,
 	translation       text,
@@ -6,16 +6,16 @@ create table Example (
   datetime          datetime,
   subject           text,
   comment           text,
-  informantid       integer not null references Informant(id),  ,
-  interviewerid
+  informantid       integer not null references Informant(id),
+  interviewerid     integer not null references Interviewer(id)
 );
 
-create table Alternatives (
+create table if not exists Alternatives (
 	example1id 		integer not null references Example(id),
   example2id    integer not null references Example(id)
 );
 
-create table Informant (
+create table if not exists Informant (
 	id 			                 integer primary key autoincrement not null,
 	full_name	               text,
 	gender	                 text,
@@ -36,7 +36,7 @@ create table Informant (
 	speaks_Circ_freq         text
 );
 
-create table Interviewer (
+create table if not exists Interviewer (
 	id			      integer primary key autoincrement not null,
 	full_name 		text,
 	academic_stat	text,
@@ -44,7 +44,7 @@ create table Interviewer (
 	university		text
 );
 
-create table Advisor (
+create table if not exists Advisor (
 	interviewerid			integer not null references Interviewer(id),
 	acadadvisorid		  integer not null references Interviewer(id)
 );
