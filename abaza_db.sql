@@ -46,5 +46,5 @@ create table if not exists Interviewer (
 
 create table if not exists Advisor (
 	interviewerid			integer not null references Interviewer(id),
-	acadadvisorid		  integer not null references Interviewer(id)
+	advisorid		      integer not null references Interviewer(id)
 );
